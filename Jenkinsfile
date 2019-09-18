@@ -21,6 +21,11 @@ stage ('Archive Artifacts'){
 }
 	
 stage ('Deployment'){
-	// sh 'cp target/*.war /opt/tomcat8/webapps'
+	slackSend color: 'good', message: 'Deployment Sucessful'
+		emailext (
+		      subject: "Job Completed",
+		      body: "Jenkins Pipeline Job for Maven Build got completed !!!",
+		      to: "ejohnson1542@gmail.com"
+		    )
 }
 }
